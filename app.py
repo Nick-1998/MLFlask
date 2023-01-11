@@ -1,9 +1,11 @@
-import numpy as np
-from flask import Flask, request, jsonify, render_template
-import pickle
+from flask import Flask
+
 
 app = Flask(__name__)
-model = pickle.load(open(X_test,'model.pkl', 'rb'))
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    return "<h1>This is Flask application </h1>"
 
 
 
