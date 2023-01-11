@@ -7,11 +7,5 @@ model = pickle.load(open(X_test,'model.pkl', 'rb'))
 
 
 
-
-@app.route('/')
-def home():
-    return render_template('model.pkl')
-
-
 if __name__ == '__main__':
     app.run()
