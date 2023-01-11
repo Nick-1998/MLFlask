@@ -171,5 +171,5 @@ print(Y_test)
 
 # Save the model
 import joblib
-joblib.dump(X_test,'model.pkl')
+pickle.dump(X_test, open('model.pkl','wb'))
     
