@@ -15,8 +15,10 @@ def getprediction():
     input = [float(x) for x in request.form.values()]
     final_input = [np.array(input)]
     prediction = model.predict(final_input)
-
-    return render_template('index.html', output='TT4 value in float :{}'.format(prediction))
+    
+    output = round(prediction[0], 2)
+    
+    return render_template('index.html', 'prediction_text='Paitent has thyroid $ {}'.format(output))
    
 
 if __name__ == "__main__":
