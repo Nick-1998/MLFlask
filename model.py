@@ -15,7 +15,8 @@ from sklearn.tree import DecisionTreeClassifier
 
 # loading and reading the dataset
 
-df = pd.read_csv("thyroidata.csv")
+df = pd.read_csv("thyroiddata.csv")
+df1 = pd.read_csv("thyroid1.csv")
 
 
 # Renaming some of the columns 
