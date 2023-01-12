@@ -1,26 +1,42 @@
-import numpy as np
-from flask import Flask, request, render_template
+from flask import Flask, render_template, request
 import pickle
-import sklearn
+import numpy as np
+
+# Load the Random Forest CLassifier model
+filename = 'heart-disease-prediction-knn-model.pkl'
+model = pickle.load(open(filename, 'rb'))
 
 app = Flask(__name__)
-model = pickle.load(open('model.pkl', 'rb'))
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+	return render_template('main.html')
 
-@app.route('/getprediction',methods=['POST'])
-def getprediction():    
 
-    input = [float(x) for x in request.form.values()]
-    final_input = [np.array(input)]
-    prediction = model.predict(final_input)
-    
-    output = round(prediction[0], 2)
-    
-    return render_template('index.html', output='Paitent has thyroid $ :{}'.format(output))
-   
+@app.route('/predict', methods=['GET','POST'])
+def predict():
+    if request.method == 'POST':
 
-if __name__ == "__main__":
-    app.run(debug=True)
+        age = int(request.form['age'])
+        sex = request.form.get('sex')
+        cp = request.form.get('cp')
+        trestbps = int(request.form['trestbps'])
+        chol = int(request.form['chol'])
+        fbs = request.form.get('fbs')
+        restecg = int(request.form['restecg'])
+        thalach = int(request.form['thalach'])
+        exang = request.form.get('exang')
+        oldpeak = float(request.form['oldpeak'])
+        slope = request.form.get('slope')
+        ca = int(request.form['ca'])
+        thal = request.form.get('thal')
+        
+        data = np.array([[age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal]])
+        my_prediction = model.predict(data)
+        
+        return render_template('result.html', prediction=my_prediction)
+        
+        
+
+if __name__ == '__main__':
+	app.run(debug=True)
