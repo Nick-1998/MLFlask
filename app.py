@@ -17,9 +17,9 @@ def getprediction():
     final_input = [np.array(input)]
     prediction = model.predict(final_input)
     
-    output = round(prediction[0], 2)
     
-    return render_template('index.html', prediction_text='Paitent has thyroid $ {}'.format(output))
+    
+    return render_template('index.html', output='Paitent has thyroid $ :{}'.format(output))
    
 
 if __name__ == "__main__":
