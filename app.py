@@ -19,22 +19,37 @@ def predict():
 
         age = int(request.form['age'])
         sex = request.form.get('sex')
-        cp = request.form.get('cp')
-        trestbps = int(request.form['trestbps'])
-        chol = int(request.form['chol'])
-        fbs = request.form.get('fbs')
-        restecg = int(request.form['restecg'])
-        thalach = int(request.form['thalach'])
-        exang = request.form.get('exang')
-        oldpeak = float(request.form['oldpeak'])
-        slope = request.form.get('slope')
-        ca = int(request.form['ca'])
-        thal = request.form.get('thal')
+        on_thyroxine = float(request.form[' on_thyroxine'])
+	query_on_thyroxine'= float(request.form['query_on_thyroxine'])
+       on_antithyroid_medication = float(request.form['on_antithyroid_medication'])
+       sick = float(request.form['sick'])
+       pregnant = float(request.form['pregnant'])
+       thyroid_surgery=float(request.form['thyroid_surgery'])
+       I131_treatment = float(request.form['I131_treatment'])
+       query_hypothyroid=float(request.form['query_hypothyroid'])
+       query_hyperthyroid = float(request.form['query_hyperthyroid'])
+       lithium = request.form.get('lithium')
+       goitre =  request.form.get('goitre')
+       tumor =  request.form.get('tumor')
+       hypopituitary= request.form.get('hypopituitary')
+       psych = float(request.form['psych'])
+       T3=float(request.form['T3'])  
+       TT4=float(request.form['TT4'])  
+       T4U= float(request.form['T4U'])   
+       FTI = float(request.form['FTI'])
+       referral_source_STMW = float(request.form['referral_source_STMW'])  
+       referral_source_SVHC = float(request.form['referral_source_SVHC'])  
+       referral_source_SVHD = float(request.form['referral_source_SVHD'])  
+       referral_source_SVI = float(request.form['referral_source_SVI'])   
+       referral_source_other = float(request.form['referral_source_other'])  
+
         
-        data = np.array([[age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal]])
-        my_prediction = model.predict(data)
+        data = np.array([[age, sex,on_thyroxine,query_on_thyroxine,on_antithyroid_medication,sick,pregnant,thyroid_surgery,I131_treatment,query_hypothyroid,query_hyperthyroid,lithium,
+       goitre,tumor,hypopituitary, psych, T3,TT4,T4U,FTI,referral_source_STMW,referral_source_SVHC,referral_source_SVHD,referral_source_SVI,referral_source_other]])
         
-        return render_template('result.html', prediction=my_prediction)
+	my_prediction = model.predict(data)
+        
+       return render_template('result.html', prediction=my_prediction)
         
         
 
