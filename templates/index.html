@@ -1,23 +1,22 @@
 <html >
 <head>
-  <title>Thyroid Prediction</title>  
+  <title>Predict the Thyroid</title>  
 </head>
 
 <body>
  <div>
-	<h1>Predict Thyroid Paitent</h1>
+	<h1>Predict Thyroid</h1>
 
     <form action="{{ url_for('getprediction')}}"method="post">
-    	<input type="text" name="Thyroxine value" placeholder="TT4" required="required" />
-	 <input type="text" name="test_score" placeholder="T3" required="required" />
+    	<input type="text" name="Trhyroxine" placeholder="TT4" required="required" />
+	 <input type="text" name="T3" placeholder="T3" required="required" />
 	    
         <button type="submit" class="btn btn-primary btn-block btn-large">getprediction</button>
-    
-</form>
+    </form>
 
    <br>
    <br>
-   {{ prediction_text }}
+   {{ output }}
 
  </div>
 
