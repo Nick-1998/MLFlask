@@ -13,19 +13,40 @@
 
 <body>
 
-    <form action="{{ url_for('getprediction')}}"method="post">
-    	<input type="text" name="Trhyroxine" placeholder="TT4" required="required" />
-	 <input type="text" name="T3" placeholder="T3" required="required" />
+
+  <!-- Website Title -->
+
+  <div class="container">
+    <h2 class='container-heading'><span class="heading_font">Thyroid Detection</span></h2>
+    <div class='description'>
+      <p>A Machine Learning Web Application that predicits chances of having thyroid or not, Built with Flask and Deployed using Heroku.</p><br>
+        <p>(Note:This model is 72.57% accurate)</p>
+    </div>
+  </div>
+
+<!-- Text Area -->
+  <div class="ml-container">
+    <form action="{{ url_for('predict')}}" method="POST"> 
 	    
-        <button type="submit" class="btn btn-primary btn-block btn-large">getprediction</button>
-    </form>
-
-   <br>
-   <br>
-   {{ output }}
-
- </div>
-
-
-</body>
-</html>
+	   
+	<label for="age">Age</label>
+        <input type="text" id="age" name="age" placeholder="Your age.."><br>   
+	    
+	    
+	  <label for="sex">Sex</label>
+        <select id="sex" name="sex">
+          <option selected>----select option----</option>
+          <option value="1">Male</option>
+          <option value="0">Female</option>
+        </select><br>   
+	    
+	 <label for="on_thyroxine ">Thyroid type</label>
+        <select id="on_thyroxine" name="on_thyroxine">
+          <option selected>----select option----</option>
+          <option value="0">Typical Angina</option>
+          <option value="1">Atypical Angina</option>
+          <option value="2">Non-anginal Pain</option>
+          <option value="3">Asymtomatic</option>
+        </select><br>
+	    
+	    
